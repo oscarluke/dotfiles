@@ -78,3 +78,42 @@ defaults write com.apple.screencapture location -string "$HOME/Pictures/Screensh
 
 #"Setting screenshot format to JPG"
 defaults write com.apple.screencapture type -string "jpg"
+
+
+#"Disable Google Chrome Guest User"
+defaults write com.google.Chrome BrowserGuestModeEnabled -bool false 
+
+#"Setting Dock to auto-hide and removing the auto-hiding delay"
+defaults write com.apple.dock autohide -bool true
+defaults write com.apple.dock autohide-delay -float 0
+defaults write com.apple.dock autohide-time-modifier -float 0
+
+#"Speeding up Mission Control animations and grouping windows by application"
+defaults write com.apple.dock expose-animation-duration -float 0.1
+defaults write com.apple.dock "expose-group-by-app" -bool true
+
+#"Setting the icon size of Dock items to 36 pixels for optimal size/screen-realestate"
+defaults write com.apple.dock tilesize -int 30
+
+#"Setting Dock to auto-hide and removing the auto-hiding delay"
+defaults write com.apple.dock autohide -bool true
+defaults write com.apple.dock autohide-delay -float 0
+defaults write com.apple.dock autohide-time-modifier -float 0
+
+#"Allow text selection in Quick Look"
+defaults write com.apple.finder QLEnableTextSelection -bool TRUE
+
+#"Expanding the save panel by default"
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+
+#"Automatically quit printer app once the print jobs complete"
+defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+
+#"Enabling full keyboard access for all controls (e.g. enable Tab in modal dialogs)"
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+#"Setting trackpad & mouse speed to a reasonable number"
+defaults write -g com.apple.trackpad.scaling 6
+defaults write -g com.apple.mouse.scaling 6
