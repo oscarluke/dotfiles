@@ -11,7 +11,7 @@ brew "rbenv"
 brew "tmux"
 
 cask "1password"
-cask "alfred"
+cask "raycast"
 cask "appcleaner"
 cask "discord"
 cask "docker"
