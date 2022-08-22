@@ -68,3 +68,13 @@ cp $dev_dir/dotfiles/config/sshconfig ~/.ssh/config
 ssh-add -K ~/.ssh/id_rsa
 pbcopy < ~/.ssh/id_rsa.pub
 read -p "SSH key copied to clipboard. Add to GitHub (https://github.com/settings/keys). Press enter when done."
+
+
+read -p "Setting Mac Settings"
+
+#"Setting screenshots location to ~/Pictures/Screenshots"
+mkdir $HOME/Pictures/Screenshots
+defaults write com.apple.screencapture location -string "$HOME/Pictures/Screenshots"
+
+#"Setting screenshot format to JPG"
+defaults write com.apple.screencapture type -string "jpg"
