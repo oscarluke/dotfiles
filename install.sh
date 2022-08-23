@@ -127,7 +127,7 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 defaults write org.m0k.transmission DownloadAsk -bool false
 
 #"Set Desktop Wallpaper"
-osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/Users/luke/dotfiles/Assets/wallpaper.png"'
+osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/Users/luke/dotfiles/assets/wallpaper.png"'
 
 
 killall Finder
