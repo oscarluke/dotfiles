@@ -6,7 +6,7 @@ dev_dir=${dev_dir:-~/dev}
 mkdir -p $dev_dir
 
 # Clone dotfiles repository.
-[ -d $dev_dir/dotfiles ] || git clone https://github.com/nshki/dotfiles.git $dev_dir/dotfiles
+[ -d $dev_dir/dotfiles ] || git clone https://github.com/oscarluke/dotfiles.git $dev_dir/dotfiles
 
 # Ensure CLT for Xcode are installed.
 xcode-select --install
@@ -31,14 +31,14 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 rm -f ~/.tmux.conf && ln -s $dev_dir/dotfiles/config/.tmux.conf ~/.tmux.conf
 rm -f ~/.tmuxline && ln -s $dev_dir/dotfiles/config/.tmuxline ~/.tmuxline
 
-# Programming languages.
-curl --proto "=https" --tlsv1.2 -sSf https://sh.rustup.rs | sh
-nodenv install 16.14.0
-nodenv global 16.14.0
-pyenv install 3.10.5
-pyenv global 3.10.5
-CFLAGS="-Wno-error=implicit-function-declaration" rbenv install 3.1.2
-rbenv global 3.1.2
+# # Programming languages.
+# curl --proto "=https" --tlsv1.2 -sSf https://sh.rustup.rs | sh
+# nodenv install 16.14.0
+# nodenv global 16.14.0
+# pyenv install 3.10.5
+# pyenv global 3.10.5
+# CFLAGS="-Wno-error=implicit-function-declaration" rbenv install 3.1.2
+# rbenv global 3.1.2
 
 # Install LunarVim.
 bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
@@ -49,25 +49,25 @@ bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/
 # rm -f ~/.config/kitty/theme.conf && ln -s ~/.config/kitty/kitty-themes/themes/OneDark.conf ~/.config/kitty/theme.conf
 # rm -f ~/.config/kitty/kitty.conf && ln -s $dev_dir/dotfiles/config/kitty.conf ~/.config/kitty/kitty.conf
 
-# Setup Git.
-read -p "Enter Git name: " git_name
-read -p "Enter Git email: " git_email
-git config --global user.name "$git_name"
-git config --global user.email $git_email
-git config --global core.editor lvim
+# # Setup Git.
+# read -p "Enter Git name: " git_name
+# read -p "Enter Git email: " git_email
+# git config --global user.name "$git_name"
+# git config --global user.email $git_email
+# git config --global core.editor lvim
 
 # Setup SSH key with GitHub.
 #
 # Ref: https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
-if [ ! -f ~/.ssh/id_rsa ]; then
-  read -p "Enter GitHub email address: " github_email
-  ssh-keygen -t rsa -b 4096 -C $github_email
-fi
-eval "$(ssh-agent -s)"
-cp $dev_dir/dotfiles/config/sshconfig ~/.ssh/config
-ssh-add -K ~/.ssh/id_rsa
-pbcopy < ~/.ssh/id_rsa.pub
-read -p "SSH key copied to clipboard. Add to GitHub (https://github.com/settings/keys). Press enter when done."
+# if [ ! -f ~/.ssh/id_rsa ]; then
+#   read -p "Enter GitHub email address: " github_email
+#   ssh-keygen -t rsa -b 4096 -C $github_email
+# fi
+# eval "$(ssh-agent -s)"
+# cp $dev_dir/dotfiles/config/sshconfig ~/.ssh/config
+# ssh-add -K ~/.ssh/id_rsa
+# pbcopy < ~/.ssh/id_rsa.pub
+# read -p "SSH key copied to clipboard. Add to GitHub (https://github.com/settings/keys). Press enter when done."
 
 
 echo "Setting some Mac settings..."
@@ -92,6 +92,10 @@ defaults write com.apple.dock "expose-group-by-app" -bool true
 
 #"Setting the icon size of Dock items to 36 pixels for optimal size/screen-realestate"
 defaults write com.apple.dock tilesize -int 30
+
+#"Hidden Apps in dock get a transparent icon."
+defaults write com.apple.Dock showhidden -bool YES
+killall Dock
 
 #"Setting Dock to auto-hide and removing the auto-hiding delay"
 defaults write com.apple.dock autohide -bool true
@@ -121,7 +125,6 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
 #"Don't prompt for confirmation before downloading"
 defaults write org.m0k.transmission DownloadAsk -bool false
-
 
 killall Finder
 
