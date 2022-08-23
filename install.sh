@@ -43,11 +43,11 @@ rbenv global 3.1.2
 # Install LunarVim.
 bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
 
-# Install kitty.
-curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-git clone --depth 1 https://github.com/dexpota/kitty-themes.git ~/.config/kitty/kitty-themes
-rm -f ~/.config/kitty/theme.conf && ln -s ~/.config/kitty/kitty-themes/themes/OneDark.conf ~/.config/kitty/theme.conf
-rm -f ~/.config/kitty/kitty.conf && ln -s $dev_dir/dotfiles/config/kitty.conf ~/.config/kitty/kitty.conf
+# # Install kitty.
+# curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+# git clone --depth 1 https://github.com/dexpota/kitty-themes.git ~/.config/kitty/kitty-themes
+# rm -f ~/.config/kitty/theme.conf && ln -s ~/.config/kitty/kitty-themes/themes/OneDark.conf ~/.config/kitty/theme.conf
+# rm -f ~/.config/kitty/kitty.conf && ln -s $dev_dir/dotfiles/config/kitty.conf ~/.config/kitty/kitty.conf
 
 # Setup Git.
 read -p "Enter Git name: " git_name
@@ -70,7 +70,7 @@ pbcopy < ~/.ssh/id_rsa.pub
 read -p "SSH key copied to clipboard. Add to GitHub (https://github.com/settings/keys). Press enter when done."
 
 
-read -p "Setting Mac Settings"
+echo "Setting some Mac settings..."
 
 #"Setting screenshots location to ~/Pictures/Screenshots"
 mkdir $HOME/Pictures/Screenshots
@@ -78,8 +78,6 @@ defaults write com.apple.screencapture location -string "$HOME/Pictures/Screensh
 
 #"Setting screenshot format to JPG"
 defaults write com.apple.screencapture type -string "jpg"
-
-
 #"Disable Google Chrome Guest User"
 defaults write com.google.Chrome BrowserGuestModeEnabled -bool false 
 
@@ -117,3 +115,15 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 #"Setting trackpad & mouse speed to a reasonable number"
 defaults write -g com.apple.trackpad.scaling 6
 defaults write -g com.apple.mouse.scaling 6
+
+#"Showing all filename extensions in Finder by default"
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+#"Don't prompt for confirmation before downloading"
+defaults write org.m0k.transmission DownloadAsk -bool false
+
+
+killall Finder
+
+
+echo "Done!"
