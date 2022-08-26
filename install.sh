@@ -22,9 +22,9 @@ rm -f ~/.bash_aliases && ln -s $dev_dir/dotfiles/config/.bash_aliases ~/.bash_al
 rm -f ~/.bash_profile && ln -s $dev_dir/dotfiles/config/.bash_profile ~/.bash_profile
 source ~/.bash_profile
 
-# Switch default shell to Homebrew Bash.
-sudo bash -c 'echo "/opt/homebrew/bin/bash" >> /etc/shells'
-chsh -s /opt/homebrew/bin/bash
+# # Switch default shell to Homebrew Bash.
+# sudo bash -c 'echo "/opt/homebrew/bin/bash" >> /etc/shells'
+# chsh -s /opt/homebrew/bin/bash
 
 # tmux and tpm config.
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -128,6 +128,12 @@ defaults write org.m0k.transmission DownloadAsk -bool false
 
 #"Set Desktop Wallpaper"
 osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/Users/luke/dotfiles/assets/wallpaper.png"'
+
+# Disable "Ask Siri"
+defaults write com.apple.assistant.support "Assistant Enabled" -bool false
+
+# Remove siri icon from status menu
+defaults write com.apple.Siri StatusMenuVisible -bool false
 
 
 killall Finder
