@@ -137,6 +137,6 @@ defaults write com.apple.Siri StatusMenuVisible -bool false
 
 
 killall Finder
-
+killall Dock
 
 echo "Done!"
