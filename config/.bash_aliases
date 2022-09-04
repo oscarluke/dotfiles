@@ -1,0 +1,1 @@
+alias bupdate="brew update && brew upgrade && brew upgrade --cask --greedy"
